@@ -1,0 +1,1027 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Вартемяжская | Доставка Артезианской Воды</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            /* Saturated Dark Theme */
+            --bg-base: #030712;
+            --bg-surface: #111827;
+            --bg-surface-hover: #1f2937;
+            
+            --border-subtle: rgba(255, 255, 255, 0.08);
+            --border-focus: rgba(56, 189, 248, 0.5);
+            
+            --text-primary: #f8fafc;
+            --text-secondary: #94a3b8;
+            --text-tertiary: #64748b;
+            
+            --accent-main: #0ea5e9;
+            --accent-hover: #0284c7;
+            --accent-glow: rgba(14, 165, 233, 0.4);
+            
+            --radius-sm: 8px;
+            --radius-md: 16px;
+            --radius-lg: 24px;
+            
+            --transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            background-color: var(--bg-base);
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            color: var(--text-primary);
+            line-height: 1.6;
+            overflow-x: hidden;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            background: radial-gradient(120% 100% at 50% 0%, #0f172a 0%, #030712 100%);
+            min-height: 100vh;
+        }
+
+        /* Ambient Saturated Glow */
+        .bg-glow {
+            position: fixed;
+            top: -10%;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100vw;
+            height: 60vh;
+            background: radial-gradient(circle, var(--accent-glow) 0%, transparent 70%);
+            filter: blur(120px);
+            z-index: -1;
+            pointer-events: none;
+            opacity: 0.6;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1280px;
+            padding: 0 24px;
+            margin: 0 auto;
+        }
+
+        /* Header */
+        .header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 80px;
+            background: rgba(3, 7, 18, 0.7);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border-bottom: 1px solid var(--border-subtle);
+            z-index: 50;
+            display: flex;
+            align-items: center;
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 800;
+            letter-spacing: -0.02em;
+            color: var(--text-primary);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .logo span {
+            color: var(--accent-main);
+        }
+
+        .header-contacts {
+            display: flex;
+            align-items: center;
+            gap: 24px;
+        }
+
+        .contact-time {
+            font-size: 0.875rem;
+            color: var(--text-secondary);
+            display: none;
+        }
+
+        @media (min-width: 768px) {
+            .contact-time { display: block; }
+        }
+
+        .contact-phone {
+            font-size: 1.125rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            text-decoration: none;
+            transition: color var(--transition);
+        }
+
+        .contact-phone:hover {
+            color: var(--accent-main);
+        }
+
+        /* Buttons */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0 32px;
+            height: 52px;
+            font-size: 1rem;
+            font-weight: 600;
+            border-radius: var(--radius-sm);
+            text-decoration: none;
+            transition: all var(--transition);
+            cursor: pointer;
+            border: none;
+            outline: none;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--accent-main) 0%, #3b82f6 100%);
+            color: #ffffff;
+            box-shadow: 0 8px 20px rgba(14, 165, 233, 0.3);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 12px 24px rgba(14, 165, 233, 0.5);
+            background: linear-gradient(135deg, var(--accent-hover) 0%, #2563eb 100%);
+        }
+
+        .btn-secondary {
+            background-color: rgba(255, 255, 255, 0.05);
+            color: var(--text-primary);
+            border: 1px solid var(--border-subtle);
+            backdrop-filter: blur(8px);
+        }
+
+        .btn-secondary:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+            border-color: var(--border-focus);
+            transform: translateY(-2px);
+        }
+
+        /* Layout Grids */
+        .section {
+            padding: 120px 0;
+            width: 100%;
+        }
+
+        /* Hero */
+        .hero {
+            padding-top: 180px;
+            padding-bottom: 100px;
+        }
+
+        .hero-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 64px;
+            align-items: center;
+        }
+
+        @media (min-width: 1024px) {
+            .hero-grid { grid-template-columns: 1fr 1fr; gap: 80px; }
+        }
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            padding: 8px 16px;
+            background: rgba(14, 165, 233, 0.1);
+            color: var(--accent-main);
+            border-radius: 100px;
+            font-size: 0.875rem;
+            font-weight: 600;
+            margin-bottom: 24px;
+            border: 1px solid rgba(14, 165, 233, 0.2);
+            box-shadow: 0 0 20px rgba(14, 165, 233, 0.1);
+        }
+
+        .hero-title {
+            font-size: clamp(2.5rem, 5vw, 4.5rem);
+            font-weight: 800;
+            line-height: 1.1;
+            letter-spacing: -0.03em;
+            margin-bottom: 24px;
+            background: linear-gradient(180deg, #ffffff 0%, #cbd5e1 100%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero-desc {
+            font-size: clamp(1.125rem, 2vw, 1.25rem);
+            color: var(--text-secondary);
+            margin-bottom: 48px;
+            max-width: 540px;
+            line-height: 1.7;
+        }
+
+        .hero-actions {
+            display: flex;
+            gap: 16px;
+            flex-wrap: wrap;
+        }
+
+        /* Image Blocks */
+        .visual-block {
+            width: 100%;
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            position: relative;
+            box-shadow: 0 24px 48px rgba(0,0,0,0.5);
+            border: 1px solid var(--border-subtle);
+        }
+        
+        .visual-block::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            box-shadow: inset 0 0 0 1px rgba(255,255,255,0.1);
+            border-radius: var(--radius-lg);
+            z-index: 10;
+            pointer-events: none;
+        }
+
+        .hero-visual {
+            aspect-ratio: 4/3;
+            background-image: url('1.png');
+            background-size: cover;
+            background-position: center;
+        }
+
+        .about-visual {
+            aspect-ratio: 1/1;
+            background-image: url('2.png');
+            background-size: cover;
+            background-position: center;
+        }
+
+        /* Features */
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 24px;
+        }
+
+        .feature-card {
+            background: linear-gradient(180deg, rgba(30, 41, 59, 0.4) 0%, rgba(15, 23, 42, 0.4) 100%);
+            border: 1px solid var(--border-subtle);
+            padding: 40px 32px;
+            border-radius: var(--radius-md);
+            transition: var(--transition);
+            display: flex;
+            flex-direction: column;
+            gap: 24px;
+            position: relative;
+            overflow: hidden;
+            backdrop-filter: blur(12px);
+        }
+
+        .feature-card::after {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; height: 1px;
+            background: linear-gradient(90deg, transparent, var(--border-focus), transparent);
+            opacity: 0;
+            transition: var(--transition);
+        }
+
+        .feature-card:hover {
+            transform: translateY(-4px);
+            border-color: rgba(14, 165, 233, 0.3);
+            box-shadow: 0 16px 32px rgba(0, 0, 0, 0.4);
+        }
+
+        .feature-card:hover::after {
+            opacity: 1;
+        }
+
+        .icon-wrapper {
+            width: 56px;
+            height: 56px;
+            background: rgba(14, 165, 233, 0.1);
+            border-radius: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--accent-main);
+            box-shadow: inset 0 0 0 1px rgba(14, 165, 233, 0.2);
+        }
+
+        .icon-wrapper svg {
+            width: 28px;
+            height: 28px;
+            fill: currentColor;
+        }
+
+        .feature-title {
+            font-size: 1.25rem;
+            font-weight: 700;
+        }
+
+        /* About Section */
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 64px;
+        }
+
+        @media (min-width: 1024px) {
+            .about-grid { grid-template-columns: 1fr 1fr; align-items: center; }
+        }
+
+        .section-title {
+            font-size: clamp(2rem, 4vw, 3rem);
+            font-weight: 800;
+            letter-spacing: -0.02em;
+            margin-bottom: 24px;
+        }
+
+        .about-text {
+            color: var(--text-secondary);
+            font-size: 1.125rem;
+            margin-bottom: 24px;
+            line-height: 1.8;
+        }
+
+        .about-text strong {
+            color: var(--text-primary);
+            font-weight: 600;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 32px;
+            margin-top: 48px;
+            padding-top: 48px;
+            border-top: 1px solid var(--border-subtle);
+        }
+
+        .stat-value {
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: var(--accent-main);
+            margin-bottom: 8px;
+            letter-spacing: -0.02em;
+        }
+
+        .stat-label {
+            font-size: 0.875rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: var(--text-secondary);
+            font-weight: 600;
+        }
+
+        /* Tabs (Description & Chemistry) */
+        .tabs-container {
+            margin-top: 64px;
+            background: linear-gradient(180deg, rgba(30, 41, 59, 0.3) 0%, rgba(15, 23, 42, 0.3) 100%);
+            border: 1px solid var(--border-subtle);
+            border-radius: var(--radius-lg);
+            backdrop-filter: blur(12px);
+            overflow: hidden;
+            box-shadow: 0 16px 32px rgba(0,0,0,0.3);
+        }
+
+        .tabs-header {
+            display: flex;
+            border-bottom: 1px solid var(--border-subtle);
+            background: rgba(15, 23, 42, 0.5);
+            flex-wrap: wrap;
+        }
+
+        .tab-btn {
+            flex: 1;
+            min-width: 200px;
+            padding: 24px 20px;
+            text-align: center;
+            background: transparent;
+            border: none;
+            color: var(--text-secondary);
+            font-size: 1.125rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+            outline: none;
+            border-bottom: 2px solid transparent;
+        }
+
+        .tab-btn:hover {
+            color: var(--text-primary);
+            background: rgba(255, 255, 255, 0.02);
+        }
+
+        .tab-btn.active {
+            color: var(--accent-main);
+            border-bottom-color: var(--accent-main);
+            background: rgba(14, 165, 233, 0.05);
+        }
+
+        .tab-content {
+            display: none;
+            padding: 40px;
+            animation: fadeIn 0.4s ease;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Specs Grid */
+        .specs-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 20px;
+        }
+
+        .spec-item {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+            padding: 20px;
+            background: rgba(255,255,255,0.02);
+            border-radius: var(--radius-md);
+            border: 1px solid var(--border-subtle);
+            transition: var(--transition);
+        }
+
+        .spec-item:hover {
+            background: rgba(255,255,255,0.04);
+            border-color: rgba(255,255,255,0.1);
+        }
+
+        .spec-label {
+            color: var(--text-secondary);
+            font-size: 0.875rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .spec-value {
+            color: var(--text-primary);
+            font-size: 1.125rem;
+            font-weight: 600;
+        }
+
+        /* Chemistry Table */
+        .chem-wrapper {
+            overflow-x: auto;
+        }
+
+        .chem-table {
+            width: 100%;
+            border-collapse: collapse;
+            min-width: 600px;
+        }
+
+        .chem-table th {
+            text-align: left;
+            padding: 20px;
+            color: var(--text-secondary);
+            font-weight: 600;
+            border-bottom: 1px solid var(--border-subtle);
+            background: rgba(255,255,255,0.02);
+            font-size: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .chem-table td {
+            padding: 20px;
+            border-bottom: 1px solid var(--border-subtle);
+            color: var(--text-primary);
+            font-size: 1.125rem;
+        }
+
+        .chem-table tr {
+            transition: var(--transition);
+        }
+
+        .chem-table tbody tr:hover {
+            background: rgba(255,255,255,0.02);
+        }
+
+        .chem-table tr:last-child td {
+            border-bottom: none;
+        }
+
+        .chem-val {
+            color: var(--accent-main);
+            font-weight: 700;
+            float: right;
+        }
+
+        /* Pricing Cards */
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 24px;
+            align-items: center;
+            margin-top: 48px;
+        }
+
+        .pricing-card {
+            background: linear-gradient(180deg, rgba(30, 41, 59, 0.3) 0%, rgba(15, 23, 42, 0.3) 100%);
+            border: 1px solid var(--border-subtle);
+            border-radius: var(--radius-lg);
+            padding: 48px 32px;
+            text-align: center;
+            transition: var(--transition);
+            position: relative;
+            backdrop-filter: blur(12px);
+        }
+
+        .pricing-card:hover {
+            border-color: var(--border-focus);
+            transform: translateY(-4px);
+        }
+
+        .pricing-card.popular {
+            background: linear-gradient(180deg, rgba(14, 165, 233, 0.1) 0%, rgba(15, 23, 42, 0.4) 100%);
+            border: 1px solid rgba(14, 165, 233, 0.4);
+            transform: scale(1.05);
+            box-shadow: 0 24px 48px rgba(14, 165, 233, 0.15);
+        }
+        
+        @media (max-width: 1024px) {
+            .pricing-card.popular { transform: scale(1); }
+        }
+
+        .pricing-card.popular:hover {
+            transform: scale(1.05) translateY(-4px);
+            border-color: var(--accent-main);
+        }
+        
+        @media (max-width: 1024px) {
+            .pricing-card.popular:hover { transform: translateY(-4px); }
+        }
+
+        .pricing-badge {
+            position: absolute;
+            top: -14px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--accent-main);
+            color: #fff;
+            padding: 6px 16px;
+            border-radius: 100px;
+            font-size: 0.875rem;
+            font-weight: 700;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+            box-shadow: 0 4px 12px rgba(14, 165, 233, 0.4);
+        }
+
+        .pricing-tier {
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: var(--text-secondary);
+            margin-bottom: 24px;
+        }
+
+        .pricing-price {
+            font-size: 3rem;
+            font-weight: 800;
+            color: var(--text-primary);
+            margin-bottom: 8px;
+            line-height: 1;
+        }
+
+        .pricing-unit {
+            font-size: 1rem;
+            color: var(--text-secondary);
+            margin-bottom: 40px;
+        }
+
+        /* Delivery & Map */
+        .delivery-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 32px;
+        }
+
+        @media (min-width: 1024px) {
+            .delivery-grid { grid-template-columns: 2fr 1fr; }
+        }
+
+        .map-container {
+            height: 500px;
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            border: 1px solid var(--border-subtle);
+            background: var(--bg-surface);
+            box-shadow: 0 12px 24px rgba(0,0,0,0.3);
+        }
+
+        #map {
+            width: 100%;
+            height: 100%;
+            filter: none;
+        }
+
+        .contacts-panel {
+            background: linear-gradient(180deg, rgba(30, 41, 59, 0.4) 0%, rgba(15, 23, 42, 0.4) 100%);
+            border: 1px solid var(--border-subtle);
+            border-radius: var(--radius-lg);
+            padding: 48px;
+            display: flex;
+            flex-direction: column;
+            gap: 32px;
+            backdrop-filter: blur(12px);
+        }
+
+        .contact-block h4 {
+            font-size: 0.875rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: var(--text-tertiary);
+            margin-bottom: 8px;
+        }
+
+        .contact-block p, .contact-block a {
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: var(--text-primary);
+            text-decoration: none;
+            transition: color var(--transition);
+        }
+        
+        .contact-block a:hover {
+            color: var(--accent-main);
+        }
+
+        .addresses-box {
+            margin-top: 32px;
+            padding: 48px;
+            background: linear-gradient(180deg, rgba(30, 41, 59, 0.2) 0%, rgba(15, 23, 42, 0.2) 100%);
+            border: 1px solid var(--border-subtle);
+            border-radius: var(--radius-lg);
+            backdrop-filter: blur(12px);
+        }
+
+        .addresses-box h3 {
+            font-size: 1.5rem;
+            margin-bottom: 32px;
+            font-weight: 700;
+        }
+
+        .addresses-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+            gap: 20px;
+        }
+
+        .addresses-list span {
+            color: var(--text-secondary);
+            font-size: 1.05rem;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-weight: 500;
+        }
+        
+        .addresses-list span::before {
+            content: '';
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background: var(--accent-main);
+            box-shadow: 0 0 8px var(--accent-main);
+        }
+
+        /* Footer */
+        .footer {
+            border-top: 1px solid var(--border-subtle);
+            padding: 48px 0;
+            text-align: center;
+            color: var(--text-tertiary);
+            font-size: 0.875rem;
+            width: 100%;
+            margin-top: auto;
+            background: rgba(3, 7, 18, 0.8);
+        }
+    </style>
+</head>
+<body>
+
+    <div class="bg-glow"></div>
+
+    <header class="header">
+        <div class="container header-content">
+            <a href="#" class="logo">VODA<span>147</span></a>
+            <div class="header-contacts">
+                <span class="contact-time">Ежедневно 9:00 - 21:00</span>
+                <a href="tel:+79112616161" class="contact-phone">8 (911) 261-61-61</a>
+            </div>
+        </div>
+    </header>
+
+    <main class="container">
+        
+        <section class="section hero">
+            <div class="hero-grid">
+                <div>
+                    <div class="hero-badge">Скважина №1414, Гдовский горизонт</div>
+                    <h1 class="hero-title">Природная чистота с доставкой на дом</h1>
+                    <p class="hero-desc">Бутилированная артезианская вода из природных источников. Позаботьтесь о здоровье своих близких — остальное сделаем мы.</p>
+                    <div class="hero-actions">
+                        <a href="#catalog" class="btn btn-primary">Выбрать объем</a>
+                        <a href="#about" class="btn btn-secondary">Подробнее</a>
+                    </div>
+                </div>
+                <div class="visual-block hero-visual"></div>
+            </div>
+        </section>
+
+        <section class="section">
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="icon-wrapper">
+                        <svg viewBox="0 0 24 24"><path d="M12 2L3 6v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V6l-9-4zm-2 16l-4-4 1.41-1.41L10 15.17l6.59-6.59L18 10l-8 8z"/></svg>
+                    </div>
+                    <h3 class="feature-title">Гарантия качества</h3>
+                </div>
+                <div class="feature-card">
+                    <div class="icon-wrapper">
+                        <svg viewBox="0 0 24 24"><path d="M18 6l-1.41 1.41L18.17 9H11v2h7.17l-1.58 1.58L18 14l4-4-4-4zm-9 14h10v-2H9v2zm-6-2h2v-2H3v2zm0-4h2v-2H3v2zM3 8h2v-2H3v2z"/></svg>
+                    </div>
+                    <h3 class="feature-title">Быстрая доставка</h3>
+                </div>
+                <div class="feature-card">
+                    <div class="icon-wrapper">
+                        <svg viewBox="0 0 24 24"><path d="M11.8 10.9c-2.27-.59-3-1.2-3-2.15 0-1.09 1.01-1.85 2.7-1.85 1.78 0 2.44.85 2.5 2.1h2.2c-.07-1.72-1.12-3.3-3.21-3.81V3h-3v2.16c-1.94.42-3.5 1.68-3.5 3.61 0 2.31 1.91 3.46 4.7 4.13 2.5.6 3 1.48 3 2.41 0 1.09-1 1.85-2.7 1.85-1.94 0-2.61-.95-2.67-2.1h-2.2c.07 1.72 1.12 3.3 3.21 3.81V21h3v-2.16c1.94-.42 3.5-1.68 3.5-3.61 0-2.31-1.91-3.46-4.7-4.13z"/></svg>
+                    </div>
+                    <h3 class="feature-title">Выгодные цены</h3>
+                </div>
+                <div class="feature-card">
+                    <div class="icon-wrapper">
+                        <svg viewBox="0 0 24 24"><path d="M12.79 21L1 9.21 1.21 1.21l8 8L12.79 21zM9.5 7.5a1 1 0 1 0 0-2 1 1 0 0 0 0 2z"/></svg>
+                    </div>
+                    <h3 class="feature-title">Скидки клиентам</h3>
+                </div>
+            </div>
+        </section>
+
+        <section id="about" class="section">
+            <div class="about-grid">
+                <div>
+                    <h2 class="section-title">Вода «Вартемяжская»</h2>
+                    <p class="about-text">Отличается благородным и изысканным вкусом, своей мягкостью, с малой минерализацией и гармоничным составом микроэлементов.</p>
+                    <p class="about-text">Это живая природная вода, бутилированная непосредственно на источнике. Добывается в поселке Вартемяги Всеволожского района.</p>
+                    
+                    <div class="stats-grid">
+                        <div>
+                            <div class="stat-value">182м</div>
+                            <div class="stat-label">Глубина скважины</div>
+                        </div>
+                        <div>
+                            <div class="stat-value">№ 1414</div>
+                            <div class="stat-label">Номер скважины</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="visual-block about-visual"></div>
+            </div>
+
+            <div class="tabs-container">
+                <div class="tabs-header">
+                    <button class="tab-btn active" onclick="switchTab('tab-desc')">Описание</button>
+                    <button class="tab-btn" onclick="switchTab('tab-chem')">Химический состав</button>
+                </div>
+                
+                <div id="tab-desc" class="tab-content active">
+                    <div class="specs-grid">
+                        <div class="spec-item">
+                            <span class="spec-label">Объем</span>
+                            <span class="spec-value">19л.</span>
+                        </div>
+                        <div class="spec-item">
+                            <span class="spec-label">Вид воды</span>
+                            <span class="spec-value">Негазированная</span>
+                        </div>
+                        <div class="spec-item">
+                            <span class="spec-label">Материал тары</span>
+                            <span class="spec-value">Полимерные материалы (ПЭТФ)</span>
+                        </div>
+                        <div class="spec-item">
+                            <span class="spec-label">Общая минерализация</span>
+                            <span class="spec-value">0,05-0,15 г/л</span>
+                        </div>
+                        <div class="spec-item">
+                            <span class="spec-label">Общая жесткость</span>
+                            <span class="spec-value">0,1-0,5 мг-экв/л</span>
+                        </div>
+                        <div class="spec-item">
+                            <span class="spec-label">Номер скважины</span>
+                            <span class="spec-value">Артезианская скважина № 1414</span>
+                        </div>
+                        <div class="spec-item">
+                            <span class="spec-label">Глубина скважины</span>
+                            <span class="spec-value">180м.</span>
+                        </div>
+                        <div class="spec-item">
+                            <span class="spec-label">Температура хранения</span>
+                            <span class="spec-value">от +2 °С до +25 °С</span>
+                        </div>
+                        <div class="spec-item">
+                            <span class="spec-label">Минимальный заказ</span>
+                            <span class="spec-value">От 2 шт.</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="tab-chem" class="tab-content">
+                    <div class="chem-wrapper">
+                        <table class="chem-table">
+                            <thead>
+                                <tr>
+                                    <th>Катионы, мг/л</th>
+                                    <th>Анионы, мг/л</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Кальций (Са2+) <span class="chem-val">0,2-50</span></td>
+                                    <td>Бикарбонаты (НСО32-) <span class="chem-val">2-40</span></td>
+                                </tr>
+                                <tr>
+                                    <td>Магний (Mg2+) <span class="chem-val">0,2-30</span></td>
+                                    <td>Хлориды (Cl -) <span class="chem-val">15-150</span></td>
+                                </tr>
+                                <tr>
+                                    <td>Калий (К +) <span class="chem-val">0,2-20</span></td>
+                                    <td>Сульфаты (SO42-) <span class="chem-val">0,2-25</span></td>
+                                </tr>
+                                <tr>
+                                    <td>Натрий (Na +) <span class="chem-val">5-75</span></td>
+                                    <td></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="catalog" class="section">
+            <h2 class="section-title" style="text-align: center; margin-bottom: 16px;">Стоимость воды 19Л</h2>
+            <p class="about-text" style="text-align: center; max-width: 600px; margin: 0 auto;">Выберите подходящий объем. Чем больше заказ, тем выгоднее цена за одну бутыль.</p>
+            
+            <div class="pricing-grid">
+                <div class="pricing-card">
+                    <div class="pricing-tier">2 - 5 бутылей</div>
+                    <div class="pricing-price">350 ₽</div>
+                    <div class="pricing-unit">за штуку</div>
+                    <a href="https://vk.com/voda147shop" target="_blank" class="btn btn-secondary" style="width: 100%;">Выбрать</a>
+                </div>
+                
+                <div class="pricing-card popular">
+                    <div class="pricing-badge">Хит продаж</div>
+                    <div class="pricing-tier">5 - 10 бутылей</div>
+                    <div class="pricing-price">300 ₽</div>
+                    <div class="pricing-unit">за штуку</div>
+                    <a href="https://vk.com/voda147shop" target="_blank" class="btn btn-primary" style="width: 100%;">Выбрать</a>
+                </div>
+                
+                <div class="pricing-card">
+                    <div class="pricing-tier">10+ бутылей</div>
+                    <div class="pricing-price" style="font-size: 2.2rem; margin-top: 12px; margin-bottom: 20px;">Договорная</div>
+                    <div class="pricing-unit">индивидуальные условия</div>
+                    <a href="https://vk.com/voda147shop" target="_blank" class="btn btn-secondary" style="width: 100%;">Обсудить</a>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title" style="margin-bottom: 48px;">Доставка и Контакты</h2>
+            <div class="delivery-grid">
+                <div class="map-container">
+                    <div id="map"></div>
+                </div>
+                <div class="contacts-panel">
+                    <div class="contact-block">
+                        <h4>Телефон</h4>
+                        <a href="tel:+79112616161">8 (911) 261-61-61</a>
+                    </div>
+                    <div class="contact-block">
+                        <h4>Режим работы</h4>
+                        <p>Звоните с 9:00 до 21:00</p>
+                    </div>
+                    <div class="contact-block">
+                        <h4>Мессенджеры</h4>
+                        <a href="https://api.whatsapp.com/send/?phone=79112616161" style="color: var(--accent-main);">WhatsApp</a>
+                    </div>
+                    <div class="contact-block">
+                        <h4>Email</h4>
+                        <p>voda147@yandex.ru</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="addresses-box">
+                <h3>Зоны доставки по северу ЛО:</h3>
+                <div class="addresses-list">
+                    <span>Лесколово</span>
+                    <span>Токсово</span>
+                    <span>Кузьмолово</span>
+                    <span>Энколово</span>
+                    <span>Сарьяги</span>
+                    <span>Порошкино</span>
+                    <span>Осельки</span>
+                    <span>Матокса</span>
+                    <span>Грузино</span>
+                    <span>Васкелово</span>
+                    <span>Орехово</span>
+                    <span>Сосново</span>
+                    <span>Гарболово</span>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <p>© 2026 VODA 147. Все права защищены. Доставка артезианской воды.</p>
+        </div>
+    </footer>
+
+    <script>
+        function switchTab(tabId) {
+            document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
+            document.querySelectorAll('.tab-content').forEach(content => content.classList.remove('active'));
+            
+            event.currentTarget.classList.add('active');
+            document.getElementById(tabId).classList.add('active');
+        }
+    </script>
+
+    <script src="https://api-maps.yandex.ru/2.1/?lang=ru_RU&apikey=YOUR_API_KEY_HERE" type="text/javascript"></script>
+    <script type="text/javascript">
+        ymaps.ready(init);
+        function init(){
+            var myMap = new ymaps.Map("map", {
+                center: [60.1691, 30.2929],
+                zoom: 10,
+                controls: ['zoomControl']
+            });
+
+            myMap.behaviors.disable('scrollZoom');
+
+            var deliveryPoints = [
+                {coord: [60.1691, 30.2929], name: "Вартемяги (Скважина)"},
+                {coord: [60.2014, 30.4357], name: "Лесколово"},
+                {coord: [60.1500, 30.5000], name: "Токсово"},
+                {coord: [60.1000, 30.4500], name: "Кузьмолово"},
+                {coord: [60.1200, 30.3500], name: "Энколово"},
+                {coord: [60.0800, 30.3800], name: "Порошкино"}
+            ];
+
+            deliveryPoints.forEach(function(point) {
+                var myPlacemark = new ymaps.Placemark(point.coord, {
+                    balloonContent: point.name
+                }, {
+                    preset: 'islands#blueCircleDotIcon',
+                    iconColor: '#0ea5e9'
+                });
+                myMap.geoObjects.add(myPlacemark);
+            });
+        }
+    </script>
+</body>
+</html>
