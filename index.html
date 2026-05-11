@@ -9,26 +9,20 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
         :root {
-            /* Saturated Dark Theme */
             --bg-base: #030712;
             --bg-surface: #111827;
             --bg-surface-hover: #1f2937;
-            
             --border-subtle: rgba(255, 255, 255, 0.08);
             --border-focus: rgba(56, 189, 248, 0.5);
-            
             --text-primary: #f8fafc;
             --text-secondary: #94a3b8;
             --text-tertiary: #64748b;
-            
             --accent-main: #0ea5e9;
             --accent-hover: #0284c7;
             --accent-glow: rgba(14, 165, 233, 0.4);
-            
             --radius-sm: 8px;
             --radius-md: 16px;
             --radius-lg: 24px;
-            
             --transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
@@ -57,7 +51,6 @@
             min-height: 100vh;
         }
 
-        /* Ambient Saturated Glow */
         .bg-glow {
             position: fixed;
             top: -10%;
@@ -79,7 +72,6 @@
             margin: 0 auto;
         }
 
-        /* Header */
         .header {
             position: fixed;
             top: 0;
@@ -117,6 +109,28 @@
             color: var(--accent-main);
         }
 
+        .header-nav {
+            display: none;
+            align-items: center;
+            gap: 32px;
+        }
+
+        .header-nav a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.95rem;
+            transition: color var(--transition);
+        }
+
+        .header-nav a:hover {
+            color: var(--text-primary);
+        }
+
+        @media (min-width: 1024px) {
+            .header-nav { display: flex; }
+        }
+
         .header-contacts {
             display: flex;
             align-items: center;
@@ -145,7 +159,6 @@
             color: var(--accent-main);
         }
 
-        /* Buttons */
         .btn {
             display: inline-flex;
             align-items: center;
@@ -187,13 +200,11 @@
             transform: translateY(-2px);
         }
 
-        /* Layout Grids */
         .section {
             padding: 120px 0;
             width: 100%;
         }
 
-        /* Hero */
         .hero {
             padding-top: 180px;
             padding-bottom: 100px;
@@ -250,7 +261,6 @@
             flex-wrap: wrap;
         }
 
-        /* Image Blocks */
         .visual-block {
             width: 100%;
             border-radius: var(--radius-lg);
@@ -284,7 +294,6 @@
             background-position: center;
         }
 
-        /* Features */
         .features-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
@@ -347,7 +356,6 @@
             font-weight: 700;
         }
 
-        /* About Section */
         .about-grid {
             display: grid;
             grid-template-columns: 1fr;
@@ -402,7 +410,6 @@
             font-weight: 600;
         }
 
-        /* Tabs (Description & Chemistry) */
         .tabs-container {
             margin-top: 64px;
             background: linear-gradient(180deg, rgba(30, 41, 59, 0.3) 0%, rgba(15, 23, 42, 0.3) 100%);
@@ -462,7 +469,6 @@
             to { opacity: 1; transform: translateY(0); }
         }
 
-        /* Specs Grid */
         .specs-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
@@ -498,7 +504,6 @@
             font-weight: 600;
         }
 
-        /* Chemistry Table */
         .chem-wrapper {
             overflow-x: auto;
         }
@@ -546,7 +551,6 @@
             float: right;
         }
 
-        /* Pricing Cards */
         .pricing-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -628,7 +632,6 @@
             margin-bottom: 40px;
         }
 
-        /* Delivery & Map */
         .delivery-grid {
             display: grid;
             grid-template-columns: 1fr;
@@ -685,6 +688,38 @@
             color: var(--accent-main);
         }
 
+        .messengers-wrapper {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 16px;
+            margin-top: 16px;
+        }
+
+        .messenger-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 16px 20px;
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid var(--border-subtle);
+            border-radius: var(--radius-md);
+            text-decoration: none;
+            color: var(--text-primary);
+            font-size: 1.1rem;
+            font-weight: 600;
+            transition: var(--transition);
+        }
+
+        .messenger-btn:hover {
+            background: rgba(255, 255, 255, 0.08);
+            border-color: rgba(255, 255, 255, 0.2);
+            transform: translateY(-2px);
+        }
+
+        .color-wa { color: #10b981; margin-left: 6px; font-weight: 700; }
+        .color-tg { color: #0ea5e9; margin-left: 6px; font-weight: 700; }
+        .color-max { color: #a855f7; margin-left: 6px; font-weight: 700; }
+
         .addresses-box {
             margin-top: 32px;
             padding: 48px;
@@ -724,7 +759,6 @@
             box-shadow: 0 0 8px var(--accent-main);
         }
 
-        /* Footer */
         .footer {
             border-top: 1px solid var(--border-subtle);
             padding: 48px 0;
@@ -744,6 +778,13 @@
     <header class="header">
         <div class="container header-content">
             <a href="#" class="logo">VODA<span>147</span></a>
+            
+            <nav class="header-nav">
+                <a href="#about">О воде</a>
+                <a href="#catalog">Каталог</a>
+                <a href="#contacts">Контакты</a>
+            </nav>
+
             <div class="header-contacts">
                 <span class="contact-time">Ежедневно 9:00 - 21:00</span>
                 <a href="tel:+79112616161" class="contact-phone">8 (911) 261-61-61</a>
@@ -762,6 +803,7 @@
                     <div class="hero-actions">
                         <a href="#catalog" class="btn btn-primary">Выбрать объем</a>
                         <a href="#about" class="btn btn-secondary">Подробнее</a>
+                        <a href="#contacts" class="btn btn-secondary">Контакты</a>
                     </div>
                 </div>
                 <div class="visual-block hero-visual"></div>
@@ -927,29 +969,43 @@
             </div>
         </section>
 
-        <section class="section">
+        <section id="contacts" class="section">
             <h2 class="section-title" style="margin-bottom: 48px;">Доставка и Контакты</h2>
             <div class="delivery-grid">
                 <div class="map-container">
                     <div id="map"></div>
                 </div>
                 <div class="contacts-panel">
-                    <div class="contact-block">
-                        <h4>Телефон</h4>
-                        <a href="tel:+79112616161">8 (911) 261-61-61</a>
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 32px;">
+                        <div class="contact-block">
+                            <h4>Телефон</h4>
+                            <a href="tel:+79112616161">8 (911) 261-61-61</a>
+                        </div>
+                        <div class="contact-block">
+                            <h4>Режим работы</h4>
+                            <p>Звоните с 9:00 до 21:00</p>
+                        </div>
+                        <div class="contact-block" style="grid-column: 1 / -1;">
+                            <h4>Email</h4>
+                            <p>voda147@yandex.ru</p>
+                        </div>
                     </div>
-                    <div class="contact-block">
-                        <h4>Режим работы</h4>
-                        <p>Звоните с 9:00 до 21:00</p>
+                    
+                    <div class="contact-block" style="margin-top: 16px; padding-top: 32px; border-top: 1px solid var(--border-subtle);">
+                        <h4>Быстрая связь в мессенджерах</h4>
+                        <div class="messengers-wrapper">
+                            <a href="https://api.whatsapp.com/send/?phone=79112616161" class="messenger-btn" target="_blank">
+                                Мы в <span class="color-wa">WhatsApp</span>
+                            </a>
+                            <a href="https://t.me/voda147" class="messenger-btn" target="_blank">
+                                Мы в <span class="color-tg">Telegram</span>
+                            </a>
+                            <a href="https://max.ru/u/f9LHodD0cOIAhzVmj6Pb1Thd9I1wXUldwPJyu1Nb1_pA5p3zJ053ratxloI" class="messenger-btn" target="_blank">
+                                Мы в <span class="color-max">MAX</span>
+                            </a>
+                        </div>
                     </div>
-                    <div class="contact-block">
-                        <h4>Мессенджеры</h4>
-                        <a href="https://api.whatsapp.com/send/?phone=79112616161" style="color: var(--accent-main);">WhatsApp</a>
-                    </div>
-                    <div class="contact-block">
-                        <h4>Email</h4>
-                        <p>voda147@yandex.ru</p>
-                    </div>
+
                 </div>
             </div>
 
@@ -991,7 +1047,7 @@
         }
     </script>
 
-    <script src="https://api-maps.yandex.ru/2.1/?lang=ru_RU&apikey=YOUR_API_KEY_HERE" type="text/javascript"></script>
+    <script src="https://api-maps.yandex.ru/2.1/?lang=ru_RU&apikey=API" type="text/javascript"></script>
     <script type="text/javascript">
         ymaps.ready(init);
         function init(){
